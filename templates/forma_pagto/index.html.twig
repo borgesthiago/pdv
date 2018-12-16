@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}FormaPagto index{% endblock %}
+
+{% block body %}
+    <h1>FormaPagto index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Descricao</th>
+                <th>Status</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for forma_pagto in forma_pagtos %}
+            <tr>
+                <td>{{ forma_pagto.id }}</td>
+                <td>{{ forma_pagto.descricao }}</td>
+                <td>{{ forma_pagto.status }}</td>
+                <td>
+                    <a href="{{ path('forma_pagto_show', {'id': forma_pagto.id}) }}">show</a>
+                    <a href="{{ path('forma_pagto_edit', {'id': forma_pagto.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('forma_pagto_new') }}">Create new</a>
+{% endblock %}

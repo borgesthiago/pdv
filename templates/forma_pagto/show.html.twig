@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}FormaPagto{% endblock %}
+
+{% block body %}
+    <h1>FormaPagto</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ forma_pagto.id }}</td>
+            </tr>
+            <tr>
+                <th>Descricao</th>
+                <td>{{ forma_pagto.descricao }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ forma_pagto.status }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('forma_pagto_index') }}">back to list</a>
+
+    <a href="{{ path('forma_pagto_edit', {'id': forma_pagto.id}) }}">edit</a>
+
+    {{ include('forma_pagto/_delete_form.html.twig') }}
+{% endblock %}
