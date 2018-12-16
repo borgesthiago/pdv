@@ -1,16 +1,19 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}TipoVenda index{% endblock %}
+{% block title %}Tipo de Venda{% endblock %}
 
 {% block body %}
-    <h1>TipoVenda index</h1>
-
-    <table class="table">
+ <div class="espaco">
+    <h3>Listagem de Tipo de Venda</h3>  
+    <div class="direita">
+        <a href="{{ path('tipo_venda_new') }}"><button type="button" class="ui primary button"><i class="fa fa-plus-circle" aria-hidden="true"></i> Novo</button></a>
+    </div>
+    <table class="ui celled table">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Descricao</th>
-                <th>actions</th>
+                <th>Descrição</th>
+                <th>Ações</th>
             </tr>
         </thead>
         <tbody>
@@ -19,17 +22,23 @@
                 <td>{{ tipo_venda.id }}</td>
                 <td>{{ tipo_venda.descricao }}</td>
                 <td>
-                    <a href="{{ path('tipo_venda_show', {'id': tipo_venda.id}) }}">show</a>
-                    <a href="{{ path('tipo_venda_edit', {'id': tipo_venda.id}) }}">edit</a>
+                    <div class="ui small basic icon buttons">
+                    <a href="{{ path('tipo_venda_show', {'id': tipo_venda.id}) }}"><button class="ui button"><i class="file icon"></i></button></a>
+                    <a href="{{ path('tipo_venda_edit', {'id': tipo_venda.id}) }}"><button class="ui button"><i class="edit icon"></i></button></a>
+                    {% if is_granted('ROLE_ADMIN') %}
+                    <a href="{{ path('tipo_venda_delete', {'id': tipo_venda.id}) }}"><button class="ui button"><i class="trash icon"></i></button></a>
+                    {% endif %}
+                </div>   
                 </td>
             </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">no records found</td>
+       {% else %}
+                <td colspan="6">nenhum registro encontrado</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('tipo_venda_new') }}">Create new</a>
+</div>
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('assets/js/jquery.mask.min.js') }}"></script>
 {% endblock %}

@@ -1,0 +1,45 @@
+ <div class="ui two segment">
+                <div class="ui card">
+                    <div class="content">
+                        <div class="header">{{ fornecedor.empresa }}
+                            
+                        </div>
+                    </div>
+                    <div class="content">
+                        <h4 class="ui sub header"> 
+                        </h4>
+                        <div class="ui small feed">
+                            <div class="event">
+                                <div class="content">
+                                    <div class="summary">
+                                        Id <a>{{ fornecedor.id }}</a>, <br>CNPJ Nº <a>{{ fornecedor.cnpj |number_format (2, '-', '.')}}</a>.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="event">
+                                <div class="content">
+                                    <div class="summary">
+                                        Endereço <a>{{ fornecedor.endereco }}, {{ fornecedor.bairro }} 
+                                        {{ fornecedor.cidade }} - {{ fornecedor.uf }}, cep  {{ fornecedor.cep }}</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="event">
+                                <div class="content">
+                                    <div class="summary">
+                                        {{ fornecedor.telefone }} 
+                                         {{ fornecedor.email }} 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="extra content">
+                        <a href="{{ path('fornecedor_edit', {'id': fornecedor.id}) }}"><button type="button" class="ui brown button"><i class="edit icon"></i> Editar</button></a>
+                         {% if is_granted('ROLE_ADMIN') %}
+                         {{ include('fornecedor/_delete_form.html.twig') }}
+                         {% endif %}
+                    </div>
+                </div>
+                
+            </div>   

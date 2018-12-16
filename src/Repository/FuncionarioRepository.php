@@ -19,32 +19,11 @@ class FuncionarioRepository extends ServiceEntityRepository
         parent::__construct($registry, Funcionario::class);
     }
 
-    // /**
-    //  * @return Funcionario[] Returns an array of Funcionario objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function countAll()
     {
         return $this->createQueryBuilder('f')
-            ->andWhere('f.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('f.id', 'ASC')
-            ->setMaxResults(10)
+            ->select('count(f.id)')
             ->getQuery()
-            ->getResult()
-        ;
+            ->getSingleScalarResult();
     }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?Funcionario
-    {
-        return $this->createQueryBuilder('f')
-            ->andWhere('f.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

@@ -61,6 +61,11 @@ class Funcionario
      */
     private $demissao;
 
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Vendas", mappedBy="funcionario", cascade={"persist", "remove"})
+     */
+    private $vendas;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -170,6 +175,23 @@ class Funcionario
     public function setDemissao(?\DateTimeInterface $demissao): self
     {
         $this->demissao = $demissao;
+
+        return $this;
+    }
+
+    public function getVendas(): ?Vendas
+    {
+        return $this->vendas;
+    }
+
+    public function setVendas(Vendas $vendas): self
+    {
+        $this->vendas = $vendas;
+
+        // set the owning side of the relation if necessary
+        if ($this !== $vendas->getFuncionario()) {
+            $vendas->setFuncionario($this);
+        }
 
         return $this;
     }

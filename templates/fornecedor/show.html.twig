@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Fornecedor{% endblock %}
+
+{% block body %}
+<div class="espaco">
+    <h5 class="ui header">Dados do Fornecedor</h5>
+    <div class="ui segments four column grid">       
+        {% include('fornecedor/_fornecedor_card.html.twig') %}
+        {% include('produtos/_produtos_card.html.twig') %}
+    </div>
+</div>
+{% endblock %}

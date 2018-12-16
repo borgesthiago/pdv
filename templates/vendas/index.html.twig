@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Vendas index{% endblock %}
+
+{% block body %}
+    <h1>Vendas index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>DataEmissao</th>
+                <th>Valor</th>
+                <th>Quantidade</th>
+                <th>Desconto</th>
+                <th>Comissao</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for venda in vendas %}
+            <tr>
+                <td>{{ venda.id }}</td>
+                <td>{{ venda.dataEmissao ? venda.dataEmissao|date('Y-m-d') : '' }}</td>
+                <td>{{ venda.valor }}</td>
+                <td>{{ venda.quantidade }}</td>
+                <td>{{ venda.desconto }}</td>
+                <td>{{ venda.comissao }}</td>
+                <td>
+                    <a href="{{ path('vendas_show', {'id': venda.id}) }}">show</a>
+                    <a href="{{ path('vendas_edit', {'id': venda.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('vendas_new') }}">Create new</a>
+{% endblock %}

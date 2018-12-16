@@ -14,15 +14,15 @@
     <body>
         <div class="ui pointing menu">
             <a class="active item" href="{{ path('dashboard') }}">
-                Home
+                 <i class="home icon"></i> Home
             </a>
             <div class="menu">
                 <div class="ui dropdown item">
-                Funcionário <i class="dropdown icon"></i>
+                 <i class="users icon"></i> Funcionário <i class="dropdown icon"></i>
                 <div class="menu">
                 {% if is_granted('ROLE_USER') %}
-                    <a class="item" href="{{ path('funcionario_index') }}">Listar</a>
-                    <a class="item" href="{{ path('funcionario_new') }}">Cadastrar</a>
+                    <a class="item" href="{{ path('funcionario_index') }}"><i class="list icon"></i> Listar</a>
+                    <a class="item" href="{{ path('funcionario_new') }}"><i class="plus square icon"></i>  Cadastrar</a>
                 {% endif %}
                     {% if is_granted('ROLE_SUPER_ADMIN') %}
                     <div class="divider"></div>
@@ -30,7 +30,7 @@
                         <i class="dropdown icon"></i>
                         Salário
                         <div class="menu">
-                            <a class="item" href="">Listar</a>
+                            <a class="item" href=""><i class="list icon"></i>  Listar</a>
                         </div>
                     </div>
                     {% endif %} 
@@ -40,28 +40,71 @@
              {% if is_granted('ROLE_ADMIN') %}
             <div class="menu">
                 <div class="ui dropdown item">
-                Fornecedor <i class="dropdown icon"></i>
+                 <i class="truck moving yellow icon"></i> Fornecedor <i class="dropdown icon"></i>
                 <div class="menu">
-                    <a class="item" href="">Listar</a>
-                    <a class="item" href="">Cadastrar</a>
+                    <a class="item" href="{{ path('fornecedor_index') }}"><i class="list icon"></i> Listar</a>
+                    <a class="item" href="{{ path('fornecedor_new') }}"><i class="plus square icon"></i> Cadastrar</a>
+                </div>
+                </div>
+            </div>
+             <div class="menu">
+                <div class="ui dropdown item">
+                <i class="barcode green icon"></i> Produtos <i class="dropdown icon"></i>
+                <div class="menu">
+                    <a class="item" href="{{ path('produtos_index') }}"><i class="list icon"></i> Listar</a>
+                    <a class="item" href="{{ path('produtos_new') }}"><i class="plus square icon"></i> Cadastrar</a>
+                     <div class="divider"></div>
+                    <div class="item">
+                        <i class="dropdown icon"></i>
+                        Categorias
+                        <div class="menu">
+                            <a class="item" href=""><i class="list icon"></i>  Listar</a>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+               <div class="menu">
+                <div class="ui dropdown item">
+                <i class="cart plus red icon"></i> Vendas <i class="dropdown icon"></i>
+                <div class="menu">
+                    <a class="item" href="{{ path('vendas_index') }}"><i class="list icon"></i> Listar</a>
+                    <a class="item" href="{{ path('vendas_new') }}"><i class="plus square icon"></i> Cadastrar</a>
+                     <div class="divider"></div>
+                    <div class="item">
+                        <i class="dropdown icon"></i>
+                        Devoluções
+                        <div class="menu">
+                            <a class="item" href=""><i class="list icon"></i>  Listar</a>
+                        </div>
+                    </div>
                 </div>
                 </div>
             </div>
             <div class="menu">
                 <div class="ui dropdown item">
-                Usuários <i class="dropdown icon"></i>
+                 <i class="user blue icon"></i> Usuários <i class="dropdown icon"></i>
                 <div class="menu">
-                    <a class="item" href="{{ path('user_index') }}">Listar</a>
-                    <a class="item" href="{{ path('user_new') }}">Cadastrar</a>
+                    <a class="item" href="{{ path('user_index') }}"><i class="list icon"></i> Listar</a>
+                    <a class="item" href="{{ path('user_new') }}"><i class="plus square icon"></i> Cadastrar</a>
+                </div>
+                </div>
+            </div>
+             <div class="menu">
+                <div class="ui dropdown item">
+                 <i class="cogs icon"></i> Configurações <i class="dropdown icon"></i>
+                <div class="menu">
+                    <a class="item" href="{{ path('tipo_venda_index') }}"> <i class="tags icon"></i> Tipo de Venda</a>
+                    <a class="item" href="{{ path('forma_pagto_index') }}"> <i class="money icon"></i> Forma de Pagamento</a>
                 </div>
                 </div>
             </div>
             <div class="menu">
                 <div class="ui dropdown item">
-                Relatórios <i class="dropdown icon"></i>
+                 <i class="file chart line brown icon"></i> Relatórios <i class="dropdown icon"></i>
                 <div class="menu">
-                    <a class="item" href="">Funcionário</a>
-                    <a class="item" href="">Secretaria</a>
+                    <a class="item" href=""> <i class="user icon"></i> Funcionário</a>
+                   
                 </div>
                 </div>
             </div>

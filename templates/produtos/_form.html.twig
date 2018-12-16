@@ -3,20 +3,20 @@
     <div class="column">
         {{ form_start(form, {'attr': {'class': 'ui form'}}) }}
         <div class="fields">
-            {{ form_row(form.email, {'attr': {'data-row-class': 'ten wide'}}) }}
-             {{ form_row(form.password, {'attr': {'data-row-class': 'four wide'}}) }}
+            {{ form_row(form.nome, {'attr': {'data-row-class': 'six wide'}}) }}
+             {{ form_row(form.descricao, {'attr': {'data-row-class': 'six wide'}}) }}
         </div>
         <div class="fields">
+            {{ form_row(form.preco, {'attr': {'data-row-class': 'two wide'}}) }}
+            {{ form_row(form.qtd, {'attr': {'data-row-class': 'two wide'}}) }}
+            {{ form_row(form.fornecedor, {'attr': {'data-row-class': 'eight wide'}}) }}
             {{ form_row(form.status, {'attr': {'data-row-class': 'two wide'}}) }}
-            {{ form_row(form.funcionario, {'attr': {'data-row-class': 'seven wide'}}) }}
-            {{ form_row(form.roles, {'attr': {'data-row-class': 'three wide'}}) }}
         </div>
-      
         <div class="fields">
             <div class="ui right floated buttons">
             <button class="ui primary button"><i class="save icon"></i> {{ button_label|default('Salvar') }}</button>
             <div class="or" data-text="ou"></div>
-            <a href="{{ path('funcionario_index') }}"><button type="button" class="ui secondary button "><i class="arrow circle left icon"></i> Voltar</button></a>
+            <a href="{{ path('produtos_index') }}"><button type="button" class="ui secondary button "><i class="arrow circle left icon"></i> Voltar</button></a>
             </div>
         </div>
     </div>

@@ -21,6 +21,11 @@ class TipoVenda
      */
     private $descricao;
 
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Vendas", mappedBy="tipo_venda", cascade={"persist", "remove"})
+     */
+    private $vendas;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -34,6 +39,23 @@ class TipoVenda
     public function setDescricao(string $descricao): self
     {
         $this->descricao = $descricao;
+
+        return $this;
+    }
+
+    public function getVendas(): ?Vendas
+    {
+        return $this->vendas;
+    }
+
+    public function setVendas(Vendas $vendas): self
+    {
+        $this->vendas = $vendas;
+
+        // set the owning side of the relation if necessary
+        if ($this !== $vendas->getTipoVenda()) {
+            $vendas->setTipoVenda($this);
+        }
 
         return $this;
     }

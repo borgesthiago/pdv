@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -65,6 +67,16 @@ class Cliente
      * @ORM\Column(type="date", nullable=true)
      */
     private $nascimento;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Vendas", mappedBy="cliente")
+     */
+    private $vendas;
+
+    public function __construct()
+    {
+        $this->vendas = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -187,6 +199,37 @@ class Cliente
     public function setNascimento(?\DateTimeInterface $nascimento): self
     {
         $this->nascimento = $nascimento;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Vendas[]
+     */
+    public function getVendas(): Collection
+    {
+        return $this->vendas;
+    }
+
+    public function addVenda(Vendas $venda): self
+    {
+        if (!$this->vendas->contains($venda)) {
+            $this->vendas[] = $venda;
+            $venda->setCliente($this);
+        }
+
+        return $this;
+    }
+
+    public function removeVenda(Vendas $venda): self
+    {
+        if ($this->vendas->contains($venda)) {
+            $this->vendas->removeElement($venda);
+            // set the owning side to null (unless already changed)
+            if ($venda->getCliente() === $this) {
+                $venda->setCliente(null);
+            }
+        }
 
         return $this;
     }

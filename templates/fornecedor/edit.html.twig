@@ -1,18 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Editar Tipo de Venda{% endblock %}
+{% block title %}Editar Fornecedor{% endblock %}
 
 {% block body %}
 <div class="espaco">
-    <h3>Editar Tipo de Venda</h3>
+    <h3>Editar Fornecedor</h3>
 
-    {{ include('tipo_venda/_form.html.twig', {'button_label': 'Atualizar'}) }}
+    {{ include('fornecedor/_form.html.twig', {'button_label': 'Atualizar'}) }}
 
     <div class="container">
         <div class="col-md-12">
             <div class="col-md-4">
                {% if is_granted('ROLE_ADMIN') %}
-                {{ include('tipo_venda/_delete_form.html.twig') }}
+                {{ include('fornecedor/_delete_form.html.twig') }}
                 {% endif %}
             </div>
         </div>

@@ -1,19 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}User index{% endblock %}
+{% block title %}Usuários{% endblock %}
 
 {% block body %}
-    <h1>User index</h1>
-
-    <table class="table">
+ <div class="espaco">
+    <h3>Listagem de Usuários</h3>  
+    <div class="direita">
+        <a href="{{ path('user_new') }}"><button type="button" class="ui primary button"><i class="fa fa-plus-circle" aria-hidden="true"></i> Novo</button></a>
+    </div>
+    <table class="ui celled table">
+        <thead>
         <thead>
             <tr>
                 <th>Id</th>
                 <th>Email</th>
-                <th>Roles</th>
-                <th>Password</th>
                 <th>Status</th>
-                <th>actions</th>
+                <th>Ações</th>
             </tr>
         </thead>
         <tbody>
@@ -21,21 +23,26 @@
             <tr>
                 <td>{{ user.id }}</td>
                 <td>{{ user.email }}</td>
-                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
-                <td>{{ user.password }}</td>
-                <td>{{ user.status }}</td>
                 <td>
-                    <a href="{{ path('user_show', {'id': user.id}) }}">show</a>
-                    <a href="{{ path('user_edit', {'id': user.id}) }}">edit</a>
+                {% if user.status ==1 %}Ativo{% else %}Inativo{% endif %}</td>
+                <td>
+                   <div class="ui small basic icon buttons">
+                    <a href="{{ path('user_show', {'id': user.id}) }}"><button class="ui button"><i class="file icon"></i></button></a>
+                    <a href="{{ path('user_edit', {'id': user.id}) }}"><button class="ui button"><i class="edit icon"></i></button></a>
+                    {% if is_granted('ROLE_ADMIN') %}
+                    <a href="{{ path('user_delete', {'id': user.id}) }}"><button class="ui button"><i class="trash icon"></i></button></a>
+                    {% endif %}
+                </div>    
                 </td>
             </tr>
-        {% else %}
-            <tr>
-                <td colspan="6">no records found</td>
+       {% else %}
+                <td colspan="6">nenhum registro encontrado</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('user_new') }}">Create new</a>
+</div>
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('assets/js/jquery.mask.min.js') }}"></script>
 {% endblock %}

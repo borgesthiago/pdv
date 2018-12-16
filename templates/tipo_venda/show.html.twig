@@ -3,24 +3,39 @@
 {% block title %}TipoVenda{% endblock %}
 
 {% block body %}
-    <h1>TipoVenda</h1>
-
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ tipo_venda.id }}</td>
-            </tr>
-            <tr>
-                <th>Descricao</th>
-                <td>{{ tipo_venda.descricao }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <a href="{{ path('tipo_venda_index') }}">back to list</a>
-
-    <a href="{{ path('tipo_venda_edit', {'id': tipo_venda.id}) }}">edit</a>
-
-    {{ include('tipo_venda/_delete_form.html.twig') }}
+<div class="espaco">
+    <h5 class="ui header">Dados do Tipo de Venda</h5>
+    <div class="ui segments four column grid"> 
+        <table class="ui celled table">
+                <tbody>
+                    <tr>
+                        <th>Id</th>
+                        <th>Descricao</th>
+                    </tr>
+                    <tr>
+                        <td>{{ tipo_venda.id }}</td>
+                        <td>{{ tipo_venda.descricao }}</td>
+                    </tr>
+                </tbody>
+        </table>
+    </div>
+    <div class="ui grid">
+        <div class="column">
+            <div class="fields">
+                <div class="ui right floated buttons">
+                <button class="ui primary button"><i class="save icon"></i> {{ button_label|default('Atualizar') }}</button>
+                <div class="or" data-text="ou"></div>
+                <a href="{{ path('tipo_venda_index') }}"><button type="button" class="ui secondary button "><i class="arrow circle left icon"></i> Voltar</button></a>
+                </div>
+            </div>
+        
+            <div class="fields">
+                <div class="ui left floated buttons">
+                 <a href="{{ path('tipo_venda_edit', {'id': tipo_venda.id}) }}"><button class="ui brown button"><i class="edit icon"></i> Editar</button></a>
+                <div class="or" data-text="ou"></div>
+                {{ include('tipo_venda/_delete_form.html.twig') }}
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

@@ -1,4 +1,17 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+{% form_theme form 'form/form_div.html.twig' %}
+<div class="ui grid">
+    <div class="column">
+        {{ form_start(form, {'attr': {'class': 'ui form'}}) }}
+        <div class="fields">
+             {{ form_row(form.descricao, {'attr': {'data-row-class': 'ten wide'}}) }}
+        </div>        
+        <div class="fields">
+            <div class="ui right floated buttons">
+            <button class="ui primary button"><i class="save icon"></i> {{ button_label|default('Salvar') }}</button>
+            <div class="or" data-text="ou"></div>
+            <a href="{{ path('tipo_venda_index') }}"><button type="button" class="ui secondary button "><i class="arrow circle left icon"></i> Voltar</button></a>
+            </div>
+        </div>
+    </div>
+</div>
 {{ form_end(form) }}

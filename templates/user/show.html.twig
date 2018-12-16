@@ -1,38 +1,45 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}User{% endblock %}
+{% block title %}Usuário{% endblock %}
 
 {% block body %}
-    <h1>User</h1>
-
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ user.id }}</td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td>{{ user.email }}</td>
-            </tr>
-            <tr>
-                <th>Roles</th>
-                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
-            </tr>
-            <tr>
-                <th>Password</th>
-                <td>{{ user.password }}</td>
-            </tr>
-            <tr>
-                <th>Status</th>
-                <td>{{ user.status }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <a href="{{ path('user_index') }}">back to list</a>
-
-    <a href="{{ path('user_edit', {'id': user.id}) }}">edit</a>
-
-    {{ include('user/_delete_form.html.twig') }}
+<div class="espaco">
+    <h5 class="ui header">Dados do Usuário</h5>
+    <div class="ui segments four column grid"> 
+        <table class="ui celled table">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ user.id }}</td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td>{{ user.email }}</td>
+                </tr>         
+                <tr>
+                    <th>Status</th>
+                    <td> {% if user.status ==1 %}Ativo{% else %}Inativo{% endif %}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+   <div class="ui grid">
+        <div class="column">
+            <div class="fields">
+                <div class="ui right floated buttons">
+                <button class="ui primary button"><i class="save icon"></i> {{ button_label|default('Atualizar') }}</button>
+                <div class="or" data-text="ou"></div>
+                <a href="{{ path('user_index') }}"><button type="button" class="ui secondary button "><i class="arrow circle left icon"></i> Voltar</button></a>
+                </div>
+            </div>
+        
+            <div class="fields">
+                <div class="ui left floated buttons">
+                 <a href="{{ path('user_edit', {'id': user.id}) }}"><button class="ui brown button"><i class="edit icon"></i> Editar</button></a>
+                <div class="or" data-text="ou"></div>
+                {{ include('user/_delete_form.html.twig') }}
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

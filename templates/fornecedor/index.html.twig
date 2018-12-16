@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Fornecedores{% endblock %}
+
+{% block body %}
+ <div class="espaco">
+    <h3>Listagem de Fornecedores</h3>  
+    <div class="direita">
+        <a href="{{ path('fornecedor_new') }}"><button type="button" class="ui primary button"><i class="fa fa-plus-circle" aria-hidden="true"></i> Novo</button></a>
+    </div>
+    <table class="ui celled table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Empresa</th>
+                <th>Cnpj</th>
+                <th>Cidade</th>
+                <th>Uf</th>
+                <th>Telefone</th>
+                <th>Email</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for fornecedor in fornecedors %}
+            <tr>
+                <td>{{ fornecedor.id }}</td>
+                <td>{{ fornecedor.empresa }}</td>
+                <td>{{ fornecedor.cnpj }}</td>
+                <td>{{ fornecedor.cidade }}</td>
+                <td>{{ fornecedor.uf }}</td>
+                <td>{{ fornecedor.telefone }}</td>
+                <td>{{ fornecedor.email }}</td>
+                <td>
+                <div class="ui small basic icon buttons">
+                    <a href="{{ path('fornecedor_show', {'id': fornecedor.id}) }}"><button class="ui button"><i class="file icon"></i></button></a>
+                    <a href="{{ path('fornecedor_edit', {'id': fornecedor.id}) }}"><button class="ui button"><i class="edit icon"></i></button></a>
+                    {% if is_granted('ROLE_ADMIN') %}
+                    <a href="{{ path('fornecedor_delete', {'id': fornecedor.id}) }}"><button class="ui button"><i class="trash icon"></i></button></a>
+                    {% endif %}
+                </div>                   
+                </td>
+            </tr>
+        {% else %}
+                <td colspan="6">nenhum registro encontrado</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('assets/js/jquery.mask.min.js') }}"></script>
+{% endblock %}
