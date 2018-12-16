@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New TipoVenda{% endblock %}
+
+{% block body %}
+    <h1>Create new TipoVenda</h1>
+
+    {{ include('tipo_venda/_form.html.twig') }}
+
+    <a href="{{ path('tipo_venda_index') }}">back to list</a>
+{% endblock %}

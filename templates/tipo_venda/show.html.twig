@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}TipoVenda{% endblock %}
+
+{% block body %}
+    <h1>TipoVenda</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ tipo_venda.id }}</td>
+            </tr>
+            <tr>
+                <th>Descricao</th>
+                <td>{{ tipo_venda.descricao }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('tipo_venda_index') }}">back to list</a>
+
+    <a href="{{ path('tipo_venda_edit', {'id': tipo_venda.id}) }}">edit</a>
+
+    {{ include('tipo_venda/_delete_form.html.twig') }}
+{% endblock %}
