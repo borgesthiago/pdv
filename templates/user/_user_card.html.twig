@@ -1,0 +1,51 @@
+ <div class="ui segment">
+                <div class="ui card">
+                    <div class="content">
+                        <div class="header">                 
+                               Contatos: 
+                            <div class="right floated meta">
+                                <i class="phone square icon"></i>  
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <h4 class="ui sub header"> 
+                        </h4>
+                        <div class="ui small feed">
+                            <div class="event">
+                                <div class="content">
+                                    <div class="summary">
+                                         <i class="envelope square icon"></i> {{ funcionario.user.email|default('Não Informado') }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="event">
+                                <div class="content">
+                                    <div class="summary">
+                                        <i class="phone volume icon"></i> 
+                                        {{ funcionario.telefone|default('Não Informado') }}                                            
+                                    </div>   
+                                </div>
+                            </div>
+                            <div class="event">
+                                <div class="content">
+                                    <div class="summary">
+                                        <i class="mobile alt volume icon"></i> 
+                                        {{ funcionario.celular|default('Não Informado') }}                                           
+                                    </div>   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                   <div class=" content">
+                        <div class="right floated meta">
+                            {% if funcionario.user.status|default('') == 1 %}
+                             <i class="green checkmark icon"></i> Ativo
+                            {% else %}
+                           <i class="red ban icon"></i> Inativo
+                            {% endif %}
+                            </div>
+                    </div>
+                </div>
+                
+            </div>   

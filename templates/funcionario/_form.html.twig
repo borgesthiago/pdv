@@ -1,0 +1,28 @@
+{% form_theme form 'form/form_div.html.twig' %}
+<div class="ui grid">
+    <div class="column">
+        {{ form_start(form, {'attr': {'class': 'ui form'}}) }}
+        <div class="fields">
+            {{ form_row(form.nome, {'attr': {'data-row-class': 'ten wide'}}) }}
+             {{ form_row(form.cpf, {'attr': {'data-row-class': 'four wide'}}) }}
+        </div>
+        <div class="fields">
+            {{ form_row(form.endereco, {'attr': {'data-row-class': 'eight wide'}}) }}
+            {{ form_row(form.telefone, {'attr': {'data-row-class': 'two wide'}}) }}
+            {{ form_row(form.celular, {'attr': {'data-row-class': 'two wide'}}) }}
+        </div>
+        <div class="fields">
+            {{ form_row(form.salario, {'attr': {'data-row-class': 'three wide'}}) }}   
+            {{ form_row(form.admissao, {'attr': {'data-row-class': 'three wide'}}) }} 
+            {{ form_row(form.demissao, {'attr': {'data-row-class': 'three wide'}}) }}              
+        </div> 
+        <div class="fields">
+            <div class="ui right floated buttons">
+            <button class="ui primary button"><i class="save icon"></i> {{ button_label|default('Salvar') }}</button>
+            <div class="or" data-text="ou"></div>
+            <a href="{{ path('funcionario_index') }}"><button type="button" class="ui secondary button "><i class="arrow circle left icon"></i> Voltar</button></a>
+            </div>
+        </div>
+    </div>
+</div>
+{{ form_end(form) }}

@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Funcionario{% endblock %}
+
+{% block body %}
+<div class="espaco">
+                <h5 class="ui header">Dados do Funcionário</h5>
+    <div class="ui segments four column grid">       
+        {% include('funcionario/_funcionario_card.html.twig') %}
+        {% include('funcionario/_remuneracao_card.html.twig') %}
+        {% include('funcionario/_total_vendas_card.html.twig') %}
+        {% include('user/_user_card.html.twig') %}
+    </div>
+</div>
+{% endblock %}

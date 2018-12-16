@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Painel {{ controller_name }}!{% endblock %}
+
+{% block body %}
+
+<div class="ui grid">
+    <div class="espaco">
+        <div class="four wide column">
+            <div class="ui card">
+                <div class="content">
+                    <i class="right floated users blue icon"></i>
+                    <div class="header">Funcionários</div>
+                    <div class="description">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="extra content">
+                    Total
+                    <span class="right floated star">
+                        <h2></h2>            
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div> {% if is_granted('ROLE_SUPER_ADMIN') %}
+     <div class="espaco">
+        <div class="four wide column">
+            <div class="ui card">
+                <div class="content">
+                    <i class="right floated money green icon"></i>
+                    <div class="header">Remunerações</div>
+                    <div class="description">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="extra content">
+                    Total
+                    <span class="right floated star">
+                        <h2></h2>            
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div> {% endif %} {% if is_granted('ROLE_ADMIN') %}
+    <div class="espaco">
+        <div class="four wide column">
+            <div class="ui card">
+                <div class="content">
+                    <i class="right floated building brown icon"></i>
+                    <div class="header">Fornecedores</div>
+                    <div class="description">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="extra content">
+                    Total
+                    <span class="right floated star">
+                        <h2></h2>            
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>{% endif %}
+   
+</div>
+{% endblock %}

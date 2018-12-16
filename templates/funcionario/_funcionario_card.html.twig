@@ -1,0 +1,43 @@
+ <div class="ui two segment">
+                <div class="ui card">
+                    <div class="content">
+                        <div class="header">{{ funcionario.nome }}
+                            
+                        </div>
+                    </div>
+                    <div class="content">
+                        <h4 class="ui sub header"> 
+                        </h4>
+                        <div class="ui small feed">
+                            <div class="event">
+                                <div class="content">
+                                    <div class="summary">
+                                        Funcionário cadastrado com a matrícula <a>{{ funcionario.id }}</a>, portador do CPF Nº <a>{{ funcionario.cpf |number_format (2, '-', '.')}}</a>.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="event">
+                                <div class="content">
+                                    <div class="summary">
+                                        Reside no endereço <a>{{ funcionario.endereco }}</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="event">
+                                <div class="content">
+                                    <div class="summary">
+                                       
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="extra content">
+                        <a href="{{ path('funcionario_edit', {'id': funcionario.id}) }}"><button type="button" class="ui brown button"><i class="edit icon"></i> Editar</button></a>
+                         {% if is_granted('ROLE_ADMIN') %}
+                         {{ include('funcionario/_delete_form.html.twig') }}
+                         {% endif %}
+                    </div>
+                </div>
+                
+            </div>   

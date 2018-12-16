@@ -1,0 +1,29 @@
+<?php
+
+namespace App\Controller;
+use App\Repository\SecretariaRepository;
+use App\Repository\FuncionarioRepository;
+use App\Repository\RemuneracaoRepository;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Routing\Annotation\Route;
+
+class DashboardController extends AbstractController
+{
+    /**
+     * @Route("/dashboard", name="dashboard")
+     */
+    public function index()
+    {
+     /*
+        $totalSec = $totalSecretaria->countAll();
+        $totalFunc = $totalFuncionario->countAll();
+        $totalRem = $totalRemuneracao->countSal();
+        $totalGra = $totalGratificacao->countGra();
+        $totalDesc = $totalDesconto->countDesc();
+       */
+        return $this->render('dashboard/index.html.twig', [
+            'controller_name' => 'DashboardController'
+            //'totalSec' => $totalSec
+        ]);
+    }
+}

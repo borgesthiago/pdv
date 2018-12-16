@@ -1,0 +1,47 @@
+ <div class="ui segment">
+                <div class="ui card">
+                    <div class="content">
+                        <div class="header"> 
+                        {% if funcionario.salario|default('') %}
+                            R$ <a>{{ funcionario.salario|number_format(2, ',','.') }}</a>
+                        {% else %}
+                            R$ {{ funcionario.salario|default('0,00') }}
+                        {% endif %}
+                            <div class="right floated meta">
+                                <i class="money green icon"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <h4 class="ui sub header"> 
+                        </h4>
+                        <div class="ui small feed">
+                            <div class="event">
+                                <div class="content">
+                                    <div class="summary">
+                                    Benefícios R$
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="event">
+                                <div class="content">
+                                    <div class="summary">
+                                     
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="event">
+                                <div class="content">
+                                    <div class="summary">
+                                      IR + INSS R$
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class=" content"> 
+                       Total R$
+                    </div>
+                </div>
+                
+            </div>   
